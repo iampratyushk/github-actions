@@ -12,7 +12,14 @@ jobs:
           node-version: '22.13.0'
       - name: print Node version
         run: node -v
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - name: install deps
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm install
       - name: Run test
         run: npm run lint
@@ -31,7 +38,14 @@ jobs:
           node-version: '22.13.0'
       - name: print Node version
         run: node -v
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - name: install deps
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm install
       - name: build app
         run: npm run build
