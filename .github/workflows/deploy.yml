@@ -1,0 +1,11 @@
+name: Greet user
+on: push
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: greet user
+        run: echo "Hello world"
+      - name: By user
+        run: echo "Buy User"
+        
