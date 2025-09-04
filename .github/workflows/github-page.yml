@@ -1,0 +1,12 @@
+name: deploy-to-github-pages
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get-code
+        run: |
+          echo "Cloning repo"
+          echo "${{toJson(github.repository)}}"
+          git clone https://github.com/${{github.repository}}.git myfiles
+          cd myfiles && ls
