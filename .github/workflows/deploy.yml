@@ -1,15 +1,10 @@
-name: test-github-action
-on:
-  push:
-    branches:
-      - main
+name: test-workflow
+on: push
+
 jobs:
-  my_first_job:
+  first:
+    name: first-job
     runs-on: ubuntu-latest
-    name: My first jobs
-  my_second_job:
-    runs-on: ubuntu-latest
-    name: My second job
     steps:
-      - name: test
-        run: echo "Helloworld !!"
+      - name: first
+        run: ls
