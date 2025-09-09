@@ -1,6 +1,11 @@
 name: test-workflow
-on: push
-
+on: 
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - README.md
+      - .github/workflows/*.yml
 jobs:
   build:
     runs-on: ubuntu-latest
