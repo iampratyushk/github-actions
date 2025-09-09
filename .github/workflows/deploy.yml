@@ -2,9 +2,11 @@ name: test-workflow
 on: push
 
 jobs:
-  first:
-    name: first-job
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: first
-        run: ls
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+      - uses: actions/checkout@v4.1.6
+      - run: npm lint
